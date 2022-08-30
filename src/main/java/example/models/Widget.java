@@ -17,6 +17,9 @@ public class Widget {
     @Convert(converter = WidgetTypeToStringConverter.class)
     private WidgetType type;
 
+    @Convert(converter = LowerCaseStringConverter.class)
+    private String lower;
+
     @Converter
     private static class WidgetTypeToStringConverter implements AttributeConverter<WidgetType, String> {
         @Override
@@ -26,8 +29,20 @@ public class Widget {
 
         @Override
         public WidgetType convertToEntityAttribute(String dbData) {
-            System.err.println("HERE WE ARE.");
             return dbData == null ? null : WidgetType.of(dbData);
+        }
+    }
+
+    @Converter
+    private static class LowerCaseStringConverter implements AttributeConverter<String, String> {
+        @Override
+        public String convertToDatabaseColumn(String attribute) {
+            return attribute == null ? null : attribute.toLowerCase();
+        }
+
+        @Override
+        public String convertToEntityAttribute(String dbData) {
+            return dbData.toLowerCase();
         }
     }
 }

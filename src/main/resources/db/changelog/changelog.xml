@@ -29,7 +29,8 @@
      CREATE TABLE Widget (
        name varchar(255) NOT NULL,
        widget_name varchar(255) DEFAULT NULL,
-       type varchar(255) DEFAULT NULL,       
+       type varchar(255) DEFAULT NULL,
+       lower varchar(255) DEFAULT NULL,       
        PRIMARY KEY (name),
        FOREIGN KEY (widget_name) REFERENCES Widget(name)
      );
