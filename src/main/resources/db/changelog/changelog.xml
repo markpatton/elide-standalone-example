@@ -26,6 +26,14 @@
        FOREIGN KEY (artifact_name) REFERENCES ArtifactProduct(name)
      );
 
+     CREATE TABLE Widget (
+       name varchar(255) NOT NULL,
+       widget_name varchar(255) DEFAULT NULL,
+       type varchar(255) DEFAULT NULL,       
+       PRIMARY KEY (name),
+       FOREIGN KEY (widget_name) REFERENCES Widget(name)
+     );
+
      CREATE TABLE AsyncQuery (
        id varchar(36) not null,
        createdOn timestamp,
