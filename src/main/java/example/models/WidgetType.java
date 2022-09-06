@@ -17,6 +17,14 @@ public enum WidgetType {
     }
 
     public static WidgetType of(String s) {
-        return Arrays.stream(WidgetType.values()).filter(t -> t.value.equals(s)).findFirst().orElseThrow(IllegalArgumentException::new);
+        if (s.equals(GOOD.value)) {
+            return GOOD;
+        }
+
+        if (s.equals(BAD.value)) {
+            return BAD;
+        }
+
+        throw new IllegalArgumentException("Unknown WidgetType value: " + s);
     }
 }
